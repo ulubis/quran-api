@@ -11,28 +11,9 @@ export class QuizHandler {
         try {
             const index = getRandomNumber(1, 114)
             let surah = require(`../../data/quran/${index}.json`)
-            const question =  `Dalam Al-Qur'an, surah ${surah.name.transliteration.id} adalah surah ke ....`
-            const choices = [
-                {
-                    choice: index,
-                    right: true
-                },
-                {
-                    choice: recursiveRandNumb(1, 114, index),
-                    right: false
-                },
-                {
-                    choice: recursiveRandNumb(1, 114, index),
-                    right: false
-                },
-                {
-                    choice: recursiveRandNumb(1, 114, index),
-                    right: false
-                }
-            ]
             res.send({
-                question: question,
-                choices: shuffleArray(choices)
+                question: surah.name.transliteration.id,
+                answer: index
             })
         } catch(e) {
             console.log(e)
