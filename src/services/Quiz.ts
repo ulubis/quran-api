@@ -11,6 +11,9 @@ export class QuizHandler {
         try {
             const index = getRandomNumber(1, 114)
             let surah = require(`../../data/quran/${index}.json`)
+
+            res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+
             res.send({
                 question: surah.name.transliteration.id,
                 answer: index
